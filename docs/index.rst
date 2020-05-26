@@ -1,0 +1,5 @@
+======================
+collective.restcaching
+======================
+
+User documentation
