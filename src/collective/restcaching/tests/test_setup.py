@@ -32,15 +32,6 @@ class TestSetup(unittest.TestCase):
         self.assertTrue(self.installer.isProductInstalled(
             'collective.restcaching'))
 
-    def test_browserlayer(self):
-        """Test that ICollectiveRestcachingLayer is registered."""
-        from collective.restcaching.interfaces import (
-            ICollectiveRestcachingLayer)
-        from plone.browserlayer import utils
-        self.assertIn(
-            ICollectiveRestcachingLayer,
-            utils.registered_layers())
-
 
 class TestUninstall(unittest.TestCase):
 
@@ -62,11 +53,3 @@ class TestUninstall(unittest.TestCase):
         self.assertFalse(self.installer.isProductInstalled(
             'collective.restcaching'))
 
-    def test_browserlayer_removed(self):
-        """Test that ICollectiveRestcachingLayer is removed."""
-        from collective.restcaching.interfaces import \
-            ICollectiveRestcachingLayer
-        from plone.browserlayer import utils
-        self.assertNotIn(
-            ICollectiveRestcachingLayer,
-            utils.registered_layers())
