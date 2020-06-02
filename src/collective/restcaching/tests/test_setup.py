@@ -52,4 +52,3 @@ class TestUninstall(unittest.TestCase):
         """Test if collective.restcaching is cleanly uninstalled."""
         self.assertFalse(self.installer.isProductInstalled(
             'collective.restcaching'))
-
