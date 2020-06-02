@@ -15,9 +15,6 @@
 
   <include package="plone.rest" />
 
-  <include package=".browser" />
-
-  <include file="permissions.zcml" />
   <include file="patches.zcml" />
 
   <genericsetup:registerProfile
