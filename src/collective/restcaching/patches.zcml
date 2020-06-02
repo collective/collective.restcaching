@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="collective.monkeypatcher">
+
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+    description="Add Vary-ation headers in ramcache's key"
+    module="plone.app.caching.operations.utils"
+    original="getRAMCacheKey"
+    replacement=".patches.getRAMCacheKey"
+    preserveOriginal="true"
+    />
+
+</configure>

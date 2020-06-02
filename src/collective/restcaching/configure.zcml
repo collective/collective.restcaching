@@ -13,9 +13,12 @@
   -->
   <!--<includeDependencies package="." />-->
 
+  <include package="plone.rest" />
+
   <include package=".browser" />
 
   <include file="permissions.zcml" />
+  <include file="patches.zcml" />
 
   <genericsetup:registerProfile
       name="default"
@@ -41,5 +44,14 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <!--
+  <adapter factory=".etags.ContentNegotation" name="content-negotation" />
+  -->
+
+  <subscriber 
+    for="ZPublisher.interfaces.IPubStart"
+    handler=".events.mark_vary_accept"
+    />
 
 </configure>

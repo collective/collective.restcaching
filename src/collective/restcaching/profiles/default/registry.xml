@@ -3,6 +3,12 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="collective.restcaching">
 
-<!-- -*- extra stuff goes here -*- -->
+    <records interface="plone.app.caching.interfaces.IPloneCacheSettings" />
+
+    <record name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping">
+        <value purge="False">
+            <element key="GET_application_json_">plone.content.itemView</element>
+        </value>
+    </record>
 
 </registry>

@@ -18,12 +18,19 @@ class CollectiveRestcachingLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
-        import plone.restapi
-        self.loadZCML(package=plone.restapi)
+        # import plone.restapi
+        # self.loadZCML(package=plone.restapi)
+        import plone.app.caching
+        import plone.rest
+        self.loadZCML(name="configure.zcml", package=plone.app.caching)
+        self.loadZCML(name="configure.zcml", package=plone.rest)
+        self.loadZCML(name="testing.zcml", package=plone.rest)
         self.loadZCML(package=collective.restcaching)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.restcaching:default')
+        applyProfile(portal, 'plone.app.caching:default')
+        applyProfile(portal, 'plone.app.caching:without-caching-proxy')
 
 
 COLLECTIVE_RESTCACHING_FIXTURE = CollectiveRestcachingLayer()
@@ -36,7 +43,7 @@ COLLECTIVE_RESTCACHING_INTEGRATION_TESTING = IntegrationTesting(
 
 
 COLLECTIVE_RESTCACHING_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(COLLECTIVE_RESTCACHING_FIXTURE,),
+    bases=(COLLECTIVE_RESTCACHING_FIXTURE, z2.ZSERVER_FIXTURE),
     name='CollectiveRestcachingLayer:FunctionalTesting',
 )
 
