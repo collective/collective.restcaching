@@ -46,9 +46,11 @@
   <adapter factory=".etags.ContentNegotation" name="content-negotation" />
   -->
 
+  <!--
   <subscriber 
     for="ZPublisher.interfaces.IPubStart"
     handler=".events.mark_vary_accept"
     />
+  -->
 
 </configure>
